@@ -138,11 +138,11 @@ GameServer.prototype.start = function() {
     // Create quadtree
     this.quadTree = new QuadTree(null, this.rangeBorders(), 128, 12);
 
+
+    this.startStatsServer(this.config.serverPort);
+
     // Start the server
-    this.socketServer = new WebSocket.Server({
-        port: this.config.serverPort,
-        perMessageDeflate: false
-    }, function() {
+    this.socketServer = new WebSocket.Server({server: this.httpServer}, function() {
         // Spawn starting food
         this.nodeHandler.addFood(this.config.foodStartAmount);
 
@@ -247,8 +247,6 @@ GameServer.prototype.start = function() {
         this.clients.push(ws);
         this.playerHandler.addClient(ws);
     }
-
-    this.startStatsServer(this.config.serverStatsPort);
 };
 
 GameServer.prototype.borders = function() {
