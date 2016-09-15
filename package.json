@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/OgarProject/Ogar/issues"
   },
-  "homepage": "https://github.com/OgarProject/Ogar"
+  "homepage": "https://github.com/OgarProject/Ogar",
+  "engines": {
+    "node": "^6.5.0"
+  }
 }
